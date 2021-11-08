@@ -1,7 +1,7 @@
 FROM node:16.13.0-alpine
 
 # install dependencies
-WORKDIR /
+WORKDIR /wallafront
 COPY package.json package-lock.json ./
 RUN npm ci
 
@@ -16,8 +16,8 @@ RUN npm run build
 ###
 FROM node:16.13.0-alpine
 
-WORKDIR /
-COPY --from=0 / .
+WORKDIR /wallafront
+COPY --from=0 /wallafront .
 COPY . .
 EXPOSE 80
-CMD ["node", "./build"]
+RUN npm start

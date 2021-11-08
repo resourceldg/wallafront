@@ -20,4 +20,4 @@ WORKDIR /wallafront
 COPY --from=0 /wallafront .
 COPY . .
 EXPOSE 80
-RUN npm start
+CMD ["npm","run" ,"--hosts" , "0.0.0.0" ,"--port", "80"]

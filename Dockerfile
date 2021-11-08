@@ -8,16 +8,5 @@ RUN npm ci
 # Copy all local files into the image.
 COPY . .
 
-RUN npm run build
-
-###
-# Only copy over the Node pieces we need
-# ~> Saves 35MB
-###
-FROM node:16.13.0-alpine
-
-WORKDIR /wallafront
-COPY --from=0 /wallafront .
-COPY . .
 EXPOSE 80
-CMD ["npm","run" ,"--hosts" , "0.0.0.0" ,"--port", "80"]
+CMD ["npm","run", "dev" ,"--hosts" , "0.0.0.0" ,"--port", "80"]

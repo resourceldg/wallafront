@@ -20,4 +20,4 @@ WORKDIR /
 COPY --from=0 / .
 COPY . .
 EXPOSE 80
-RUN npm run dev -- --open
+CMD ["node", "./build"]
